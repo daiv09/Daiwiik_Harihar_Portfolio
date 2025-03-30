@@ -1,6 +1,7 @@
 import { Boxes } from "../components/ui/background-boxes";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
+import Example from "@/components/ui/bento-grid";
 
 export default function Home() {
   return (
@@ -165,6 +166,8 @@ export default function Home() {
           A 2nd Year B.Tech Student at Dr. Vishwanath Karad MIT WPU, Pune
         </p>
       </div>
+
+      <Example />
 
       
     </div>
