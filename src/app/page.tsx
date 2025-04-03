@@ -6,8 +6,8 @@ import {
   IconArrowWaveRightUp,
   IconBoxAlignRightFilled,
   IconBoxAlignTopLeft,
-  IconClipboardCopy,
-  IconFileBroken,
+  // IconClipboardCopy,
+  // IconFileBroken,
   IconSignature,
   IconTableColumn,
 } from "@tabler/icons-react";
@@ -79,8 +79,13 @@ export default function Home() {
         </p>
       </div>
       <div className="max-w-4xl mx-auto my-16 text-center space-y-4">
-        <h1 className="text-6xl font-extrabold text-gray-900">Welcome to my Portfolio</h1>
-        <p className="text-lg mx-4 text-purple-600">Explore my projects, experience, and creative journey. Discover the work that defines me!</p>
+        <h1 className="text-6xl font-extrabold text-gray-900">
+          Welcome to my Portfolio
+        </h1>
+        <p className="text-lg mx-4 text-purple-600">
+          Explore my projects, experience, and creative journey. Discover the
+          work that defines me!
+        </p>
       </div>
       <BentoGrid className="max-w-4xl mx-auto">
         {items.map((item, i) => (
@@ -97,20 +102,49 @@ export default function Home() {
 
       <footer className="bg-white rounded-lg shadow sm:flex sm:items-center sm:justify-between p-4 sm:p-6 xl:p-8 dark:bg-gray-800 antialiased">
         <p className="mb-4 text-sm text-center text-gray-500 dark:text-gray-400 sm:mb-0">
-          &copy; 2025 <a href="https://flowbite.com/" className="hover:underline" target="_blank">Daiwiik Harihar</a>. All rights reserved.
+          &copy; 2025{" "}
+          <a
+            href="https://flowbite.com/"
+            className="hover:underline"
+            target="_blank"
+          >
+            Daiwiik Harihar
+          </a>
+          . All rights reserved.
         </p>
         <div className="flex justify-center items-center space-x-1">
-          <div id="tooltip-facebook" role="tooltip" className="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
+          <div
+            id="tooltip-facebook"
+            role="tooltip"
+            className="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700"
+          >
             Like us on Facebook
             <div className="tooltip-arrow" data-popper-arrow></div>
           </div>
-          <a href="#" data-tooltip-target="tooltip-twitter" className="inline-flex justify-center p-2 text-gray-500 rounded-lg cursor-pointer dark:text-gray-400 dark:hover:text-white hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-600">
-            <svg className="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-              <path fill="currentColor" d="M12.186 8.672 18.743.947h-2.927l-5.005 5.9-4.44-5.9H0l7.434 9.876-6.986 8.23h2.927l5.434-6.4 4.82 6.4H20L12.186 8.672Zm-2.267 2.671L8.544 9.515 3.2 2.42h2.2l4.312 5.719 1.375 1.828 5.731 7.613h-2.2l-4.699-6.237Z" />
+          <a
+            href="#"
+            data-tooltip-target="tooltip-twitter"
+            className="inline-flex justify-center p-2 text-gray-500 rounded-lg cursor-pointer dark:text-gray-400 dark:hover:text-white hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-600"
+          >
+            <svg
+              className="w-4 h-4"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 20 20"
+            >
+              <path
+                fill="currentColor"
+                d="M12.186 8.672 18.743.947h-2.927l-5.005 5.9-4.44-5.9H0l7.434 9.876-6.986 8.23h2.927l5.434-6.4 4.82 6.4H20L12.186 8.672Zm-2.267 2.671L8.544 9.515 3.2 2.42h2.2l4.312 5.719 1.375 1.828 5.731 7.613h-2.2l-4.699-6.237Z"
+              />
             </svg>
             <span className="sr-only">Twitter</span>
           </a>
-          <div id="tooltip-twitter" role="tooltip" className="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
+          <div
+            id="tooltip-twitter"
+            role="tooltip"
+            className="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700"
+          >
             Follow us on Twitter
             <div className="tooltip-arrow" data-popper-arrow></div>
           </div>
@@ -120,7 +154,11 @@ export default function Home() {
             </svg>
             <span className="sr-only">Github</span>
           </a>
-          <div id="tooltip-github" role="tooltip" className="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
+          <div
+            id="tooltip-github"
+            role="tooltip"
+            className="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700"
+          >
             Star us on GitHub
             <div className="tooltip-arrow" data-popper-arrow></div>
           </div>
@@ -130,7 +168,11 @@ export default function Home() {
             </svg>
             <span className="sr-only">Dribbble</span>
           </a>
-          <div id="tooltip-dribbble" role="tooltip" className="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
+          <div
+            id="tooltip-dribbble"
+            role="tooltip"
+            className="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700"
+          >
             Follow us on Dribbble
             <div className="tooltip-arrow" data-popper-arrow></div>
           </div>
