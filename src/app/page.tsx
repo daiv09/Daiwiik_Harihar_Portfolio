@@ -3,13 +3,11 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { BentoGrid, BentoGridItem } from "../components/ui/bento-grid";
 import {
-  IconArrowWaveRightUp,
-  IconBoxAlignRightFilled,
-  IconBoxAlignTopLeft,
-  // IconClipboardCopy,
-  // IconFileBroken,
-  IconSignature,
-  IconTableColumn,
+  IconCode,
+  IconLayersIntersect,
+  IconServer,
+  IconGitBranch,
+  IconCloudUpload,
 } from "@tabler/icons-react";
 import { RiNextjsFill, RiReactjsFill } from "react-icons/ri";
 import Navbar from "../components/ui/navbar";
@@ -19,49 +17,43 @@ const Skeleton = () => (
 );
 const items = [
   {
-    title: "Next JS",
-    description: "Explore the birth of groundbreaking ideas and inventions.",
-    // header: <Skeleton />,
-    icon: <RiNextjsFill className="h-6 w-6" />,
+    title: "Next.js",
+    description: "The React framework for production-grade applications.",
+    icon: <RiNextjsFill className="h-6 w-6 text-black" />,
   },
   {
-    title: "React JS",
-    description: "Dive into the transformative power of technology.",
-    // header: <Skeleton />,
-    icon: <RiReactjsFill className="h-6 w-6" />,
+    title: "React.js",
+    description: "A JavaScript library for building user interfaces.",
+    icon: <RiReactjsFill className="h-6 w-6 text-blue-500" />,
   },
   {
-    title: "The Art of Design",
-    description: "Discover the beauty of thoughtful and functional design.",
-    // header: <Skeleton />,
-    icon: <IconSignature className="h-4 w-4 text-neutral-500" />,
+    title: "TypeScript",
+    description: "JavaScript with static types for better development experience.",
+    icon: <IconCode className="h-6 w-6 text-blue-600" />,
   },
   {
-    title: "The Power of Communication",
-    description:
-      "Understand the impact of effective communication in our lives.",
-    // header: <Skeleton />,
-    icon: <IconTableColumn className="h-4 w-4 text-neutral-500" />,
+    title: "Figma Designing",
+    description: "A utility-first CSS framework for fast UI development.",
+    icon: <IconLayersIntersect className="h-6 w-6 text-teal-500" />,
   },
   {
-    title: "The Pursuit of Knowledge",
-    description: "Join the quest for understanding and enlightenment.",
-    // header: <Skeleton />,
-    icon: <IconArrowWaveRightUp className="h-4 w-4 text-neutral-500" />,
+    title: "Node.js",
+    description: "A runtime for building scalable server-side applications.",
+    icon: <IconServer className="h-6 w-6 text-green-500" />,
   },
   {
-    title: "The Joy of Creation",
-    description: "Experience the thrill of bringing ideas to life.",
-    // header: <Skeleton />,
-    icon: <IconBoxAlignTopLeft className="h-4 w-4 text-neutral-500" />,
+    title: "GitHub Actions",
+    description: "Automate your workflows with CI/CD directly in GitHub.",
+    icon: <IconGitBranch className="h-6 w-6 text-black" />,
   },
   {
-    title: "The Spirit of Adventure",
-    description: "Embark on exciting journeys and thrilling discoveries.",
-    // header: <Skeleton />,
-    icon: <IconBoxAlignRightFilled className="h-4 w-4 text-neutral-500" />,
+    title: "Vercel",
+    description: "Deploy modern web applications with ease.",
+    icon: <IconCloudUpload className="h-6 w-6 text-black" />,
   },
 ];
+
+
 
 export default function Home() {
   return (
