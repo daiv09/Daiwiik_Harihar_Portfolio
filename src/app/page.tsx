@@ -1,172 +1,185 @@
 import { Boxes } from "../components/ui/background-boxes";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
+import Navbar from "@/components/Navbar";
+import ContactSection from "@/components/ContactSection";
+import { motion } from "framer-motion";
 
 export default function Home() {
   return (
-    <div>
-      <nav className="bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-700">
-        <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-          <a
-            href="#"
-            className="flex items-center space-x-3 rtl:space-x-reverse"
+    <div className="min-h-screen bg-slate-900">
+      <Navbar />
+
+      {/* Hero Section */}
+      <section className="h-screen relative w-full overflow-hidden bg-slate-900 flex flex-col items-center justify-center">
+        <div className="absolute inset-0 w-full h-full bg-slate-900 z-20 [mask-image:radial-gradient(transparent,white)] pointer-events-none" />
+        <Boxes />
+        <motion.div 
+          className="relative z-20 text-center space-y-8 max-w-4xl px-4"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+        >
+          <motion.h1 
+            className="text-4xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-500"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
           >
-            <Image
-              src="https://flowbite.com/docs/images/logo.svg"
-              className="h-8"
-              alt="Logo"
-              width={32}
-              height={32}
-            />
-            <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"></span>
-          </a>
-          <button
-            data-collapse-toggle="navbar-dropdown"
-            type="button"
-            className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-            aria-controls="navbar-dropdown"
-            aria-expanded="false"
+            Daiwiik Harihar
+          </motion.h1>
+          <motion.p 
+            className="text-xl md:text-2xl text-neutral-300 font-light"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
           >
-            <span className="sr-only">Open main menu</span>
-            <svg
-              className="w-5 h-5"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 17 14"
+            A passionate B.Tech Student at Dr. Vishwanath Karad MIT WPU, Pune
+          </motion.p>
+          <motion.div 
+            className="flex gap-4 justify-center"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+          >
+            <motion.a
+              href="#projects"
+              className="px-6 py-3 rounded-full bg-blue-600 text-white hover:bg-blue-700 transition-colors"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
-              <path
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M1 1h15M1 7h15M1 13h15"
-              />
-            </svg>
-          </button>
-          <div
-            className="hidden w-full md:block md:w-auto"
-            id="navbar-dropdown"
+              View My Work
+            </motion.a>
+            <motion.a
+              href="#contact"
+              className="px-6 py-3 rounded-full border border-white text-white hover:bg-white hover:text-slate-900 transition-colors"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Contact Me
+            </motion.a>
+          </motion.div>
+        </motion.div>
+
+        {/* Scroll Indicator */}
+        <motion.div
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ 
+            duration: 1,
+            delay: 1,
+            repeat: Infinity,
+            repeatType: "reverse"
+          }}
+        >
+          <svg
+            className="w-6 h-6 text-white animate-bounce"
+            fill="none"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
           >
-            <ul className="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
-              <li>
-                <a
-                  href="#"
-                  className="block py-2 px-3 text-white bg-blue-700 rounded-sm md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500 dark:bg-blue-600 md:dark:bg-transparent"
-                  aria-current="page"
-                >
-                  Home
-                </a>
-              </li>
-              <li>
-                <button
-                  id="dropdownNavbarLink"
-                  data-dropdown-toggle="dropdownNavbar"
-                  className="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent"
-                >
-                  Dropdown{" "}
-                  <svg
-                    className="w-2.5 h-2.5 ms-2.5"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 10 6"
-                  >
-                    <path
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="m1 1 4 4 4-4"
-                    />
-                  </svg>
-                </button>
-                {/* <!-- Dropdown menu --> */}
-                <div
-                  id="dropdownNavbar"
-                  className="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44 dark:bg-gray-700 dark:divide-gray-600"
-                >
-                  <ul
-                    className="py-2 text-sm text-gray-700 dark:text-gray-400"
-                    aria-labelledby="dropdownLargeButton"
-                  >
-                    <li>
-                      <a
-                        href="#"
-                        className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                      >
-                        About me
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                      >
-                        Settings
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                      >
-                        Earnings
-                      </a>
-                    </li>
-                  </ul>
-                  <div className="py-1">
-                    <a
-                      href="#"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                    >
-                      Sign out
-                    </a>
+            <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+          </svg>
+        </motion.div>
+      </section>
+
+      {/* About Section */}
+      <motion.section
+        id="about"
+        className="py-20 bg-slate-800"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+      >
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-8 text-center">About Me</h2>
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="space-y-6">
+              <p className="text-gray-300 leading-relaxed">
+                I'm a dedicated student passionate about technology and innovation. Currently pursuing my B.Tech degree, 
+                I'm focused on building a strong foundation in software development and engineering principles.
+              </p>
+              <div className="grid grid-cols-2 gap-4">
+                <div className="p-4 bg-slate-700 rounded-lg">
+                  <h3 className="text-xl font-semibold text-white mb-2">Education</h3>
+                  <p className="text-gray-300">B.Tech Student</p>
+                </div>
+                <div className="p-4 bg-slate-700 rounded-lg">
+                  <h3 className="text-xl font-semibold text-white mb-2">Location</h3>
+                  <p className="text-gray-300">Pune, India</p>
+                </div>
+              </div>
+            </div>
+            <div className="relative h-80 rounded-lg overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-600 to-purple-600 opacity-90 rounded-lg"></div>
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="text-center">
+                  <h3 className="text-2xl font-bold text-white mb-4">My Skills</h3>
+                  <div className="flex flex-wrap gap-2 justify-center">
+                    <span className="px-3 py-1 bg-white/20 rounded-full text-white">Web Development</span>
+                    <span className="px-3 py-1 bg-white/20 rounded-full text-white">Python</span>
+                    <span className="px-3 py-1 bg-white/20 rounded-full text-white">JavaScript</span>
+                    <span className="px-3 py-1 bg-white/20 rounded-full text-white">React</span>
                   </div>
                 </div>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-                >
-                  Services
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-                >
-                  Pricing
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-                >
-                  Contact Me
-                </a>
-              </li>
-            </ul>
+              </div>
+            </div>
           </div>
         </div>
-      </nav>
+      </motion.section>
 
-      <div className="h-96 relative w-full overflow-hidden bg-slate-900 flex flex-col items-center justify-center">
-        <div className="absolute inset-0 w-full h-full bg-slate-900 z-20 [mask-image:radial-gradient(transparent,white)] pointer-events-none" />
+      {/* Projects Section */}
+      <motion.section
+        id="projects"
+        className="py-20 bg-slate-900"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+      >
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-12 text-center">Featured Projects</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Project Card 1 */}
+            <div className="bg-slate-800 rounded-xl overflow-hidden hover:transform hover:scale-105 transition-transform duration-300">
+              <div className="h-48 bg-gradient-to-r from-blue-500 to-purple-500"></div>
+              <div className="p-6">
+                <h3 className="text-xl font-semibold text-white mb-2">Project One</h3>
+                <p className="text-gray-400 mb-4">A brief description of your first project and its key features.</p>
+                <a href="#" className="text-blue-400 hover:text-blue-300">Learn More →</a>
+              </div>
+            </div>
+            
+            {/* Project Card 2 */}
+            <div className="bg-slate-800 rounded-xl overflow-hidden hover:transform hover:scale-105 transition-transform duration-300">
+              <div className="h-48 bg-gradient-to-r from-green-500 to-blue-500"></div>
+              <div className="p-6">
+                <h3 className="text-xl font-semibold text-white mb-2">Project Two</h3>
+                <p className="text-gray-400 mb-4">A brief description of your second project and its key features.</p>
+                <a href="#" className="text-blue-400 hover:text-blue-300">Learn More →</a>
+              </div>
+            </div>
 
-        <Boxes />
-        <h1 className={cn("md:text-4xl text-xl text-white relative z-20")}>
-          Daiwiik Harihar
-        </h1>
-        <p className="text-center mt-2 text-neutral-300 relative z-20">
-          A 2nd Year B.Tech Student at Dr. Vishwanath Karad MIT WPU, Pune
-        </p>
-      </div>
+            {/* Project Card 3 */}
+            <div className="bg-slate-800 rounded-xl overflow-hidden hover:transform hover:scale-105 transition-transform duration-300">
+              <div className="h-48 bg-gradient-to-r from-purple-500 to-pink-500"></div>
+              <div className="p-6">
+                <h3 className="text-xl font-semibold text-white mb-2">Project Three</h3>
+                <p className="text-gray-400 mb-4">A brief description of your third project and its key features.</p>
+                <a href="#" className="text-blue-400 hover:text-blue-300">Learn More →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </motion.section>
 
-      
+      {/* Contact Section */}
+      <ContactSection />
     </div>
   );
 }
