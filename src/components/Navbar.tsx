@@ -34,7 +34,7 @@ const Navbar = () => {
     }`}>
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <Link href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
-          <span className="self-center text-2xl font-bold text-white">DH</span>
+          <span className="self-center text-4xl font-bold text-white">DH</span>
         </Link>
         <button
           onClick={toggleMenu}
@@ -72,7 +72,7 @@ const Navbar = () => {
             <li>
               <Link
                 href="/"
-                className={`block py-2 px-3 rounded-md md:p-3 transition-colors ${
+                className={`block py-2 px-3 rounded-md md:p-3 transition-colors text-lg ${
                   pathname === '/' ? 'text-blue-500' : 'text-white hover:text-blue-500'
                 }`}
               >
@@ -82,7 +82,7 @@ const Navbar = () => {
             <li>
               <Link
                 href="/#about"
-                className="block py-2 px-3 text-white hover:text-blue-500 rounded-md md:p-3 transition-colors"
+                className="block py-2 px-3 text-white hover:text-blue-500 rounded-md md:p-3 transition-colors text-lg"
               >
                 About
               </Link>
@@ -90,7 +90,7 @@ const Navbar = () => {
             <li>
               <Link
                 href="/#projects"
-                className="block py-2 px-3 text-white hover:text-blue-500 rounded-md md:p-3 transition-colors"
+                className="block py-2 px-3 text-white hover:text-blue-500 rounded-md md:p-3 transition-colors text-lg"
               >
                 Projects
               </Link>
@@ -98,7 +98,7 @@ const Navbar = () => {
             <li className="relative">
               <button
                 onClick={toggleDropdown}
-                className="flex items-center py-2 px-3 text-white hover:text-blue-500 rounded-md md:p-3 transition-colors"
+                className="flex items-center py-2 px-3 text-white hover:text-blue-500 rounded-md md:p-3 transition-colors text-lg"
               >
                 More
                 <svg
@@ -118,7 +118,7 @@ const Navbar = () => {
                 <div className="py-1" role="menu" aria-orientation="vertical">
                   <Link
                     href="/certificates"
-                    className={`block px-4 py-2 text-sm transition-colors ${
+                    className={`block px-4 py-2 text-base transition-colors ${
                       pathname === '/certificates' 
                         ? 'bg-slate-700 text-white' 
                         : 'text-gray-300 hover:bg-slate-700 hover:text-white'
@@ -130,7 +130,7 @@ const Navbar = () => {
                   </Link>
                   <Link
                     href="/blog"
-                    className="block px-4 py-2 text-sm text-gray-300 hover:bg-slate-700 hover:text-white transition-colors"
+                    className="block px-4 py-2 text-base text-gray-300 hover:bg-slate-700 hover:text-white transition-colors"
                     role="menuitem"
                     onClick={() => setIsDropdownOpen(false)}
                   >
@@ -138,7 +138,7 @@ const Navbar = () => {
                   </Link>
                   <Link
                     href="/designs"
-                    className="block px-4 py-2 text-sm text-gray-300 hover:bg-slate-700 hover:text-white transition-colors"
+                    className="block px-4 py-2 text-base text-gray-300 hover:bg-slate-700 hover:text-white transition-colors"
                     role="menuitem"
                     onClick={() => setIsDropdownOpen(false)}
                   >
@@ -150,7 +150,7 @@ const Navbar = () => {
             <li>
               <Link
                 href="/#contact"
-                className="block py-2 px-4 text-white bg-blue-600 hover:bg-blue-700 rounded-full md:ml-2 transition-colors text-center"
+                className="block py-3.5 px-4 text-white bg-blue-600 hover:bg-blue-700 rounded-full md:ml-2 transition-colors text-center text-lg"
               >
                 Contact Me
               </Link>

@@ -34,6 +34,16 @@ const certificatesData = [
     credential: "GGL-24680",
     link: "https://google.com/certificates/..."
   },
+  {
+    id: 4,
+    name: "UI/UX Design Fundamentals",
+    issuer: "Google",
+    date: "2023",
+    category: "Design",
+    image: "/certificates/uiux.jpg",
+    credential: "GGL-24680",
+    link: "https://google.com/certificates/..."
+  },
   // Add more certificates here
 ];
 
