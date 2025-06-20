@@ -129,7 +129,7 @@ const Navbar = () => {
                     Certificates
                   </Link>
                   <Link
-                    href="/blog"
+                    href="https://medium.com/@daiwiikharihar17147"
                     className="block px-4 py-2 text-base text-gray-300 hover:bg-slate-700 hover:text-white transition-colors"
                     role="menuitem"
                     onClick={() => setIsDropdownOpen(false)}
