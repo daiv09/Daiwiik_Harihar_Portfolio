@@ -2,84 +2,82 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 
-// You can replace these with your actual certificates
 const certificatesData = [
   {
     id: 1,
-    name: "Web Development Bootcamp",
-    issuer: "Udemy",
-    date: "2023",
-    category: "Web Development",
-    image: "/certificates/web-dev.jpg", // Replace with your certificate image
-    credential: "UC-12345",
-    link: "https://udemy.com/certificate/..."
+    name: "Data Structures & Algorithms Using C++",
+    issuer: "EdX",
+    date: "September 7, 2024",
+    image: "/DSA.jpg",
+    credential: "4ca80149ef624317a5bfc82af5e69aee",
+    link: "https://courses.edx.org/certificates/4ca80149ef624317a5bfc82af5e69aee"
   },
   {
     id: 2,
-    name: "React & Next.js Development",
-    issuer: "Coursera",
-    date: "2023",
-    category: "Web Development",
-    image: "/certificates/react.jpg",
-    credential: "CRED-67890",
-    link: "https://coursera.org/verify/..."
+    name: "Full Stack Development Course",
+    issuer: "mycaptain",
+    date: "September 2023",
+    image: "/FullStackDevelopment.jpg",
+    credential: "2EM044UI5S7VS"
   },
   {
     id: 3,
-    name: "UI/UX Design Fundamentals",
-    issuer: "Google",
-    date: "2023",
-    category: "Design",
-    image: "/certificates/uiux.jpg",
-    credential: "GGL-24680",
-    link: "https://google.com/certificates/..."
-  },
-  {
-    id: 4,
-    name: "UI/UX Design Fundamentals",
-    issuer: "Google",
-    date: "2023",
-    category: "Design",
-    image: "/certificates/uiux.jpg",
-    credential: "GGL-24680",
-    link: "https://google.com/certificates/..."
-  },
-  // Add more certificates here
+    name: "Coding Interview Preparation",
+    issuer: "Coursera",
+    date: "November 19, 2024",
+    image: "/CodingInterviewPrep.jpg",
+    link: "https://coursera.org/verify/EIAKJLNKM21T"
+  }
 ];
 
-const categories = ["All", "Web Development", "Design", "Programming", "Data Science"];
+const containerVariants = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.2
+    }
+  }
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0 }
+};
 
 const CertificatesPage = () => {
-  const [selectedCategory, setSelectedCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
 
-  const filteredCertificates = certificatesData.filter(cert => {
-    const matchesCategory = selectedCategory === "All" || cert.category === selectedCategory;
-    const matchesSearch = cert.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         cert.issuer.toLowerCase().includes(searchQuery.toLowerCase());
-    return matchesCategory && matchesSearch;
-  });
+  const filteredCertificates = certificatesData.filter(cert =>
+    cert.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    cert.issuer.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   return (
     <section className="py-20 bg-slate-900 min-h-screen" id="certificates">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-12">
+        <motion.div
+          className="text-center mb-12"
+          initial={{ opacity: 0, y: -30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
             My Certifications
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto">
             A collection of my professional certifications and achievements in various technical domains.
           </p>
-        </div>
+        </motion.div>
 
-        {/* Search and Filter */}
-        <div className="mb-8 space-y-4 md:space-y-0 md:flex md:items-center md:justify-between">
-          <div className="relative">
+        {/* Search Input */}
+        <div className="mb-8">
+          <div className="relative max-w-md mx-auto">
             <input
               type="text"
               placeholder="Search certificates..."
-              className="w-full md:w-64 px-4 py-2 bg-slate-800 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2 bg-slate-800 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
@@ -97,86 +95,61 @@ const CertificatesPage = () => {
               />
             </svg>
           </div>
-
-          <div className="flex flex-wrap gap-2">
-            {categories.map((category) => (
-              <button
-                key={category}
-                onClick={() => setSelectedCategory(category)}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-colors
-                  ${selectedCategory === category
-                    ? 'bg-blue-600 text-white'
-                    : 'bg-slate-800 text-gray-300 hover:bg-slate-700'
-                  }`}
-              >
-                {category}
-              </button>
-            ))}
-          </div>
         </div>
 
         {/* Certificates Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          variants={containerVariants}
+          initial="hidden"
+          animate="show"
+        >
           {filteredCertificates.map((certificate) => (
             <motion.div
               key={certificate.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3 }}
-              className="bg-slate-800 rounded-xl overflow-hidden hover:transform hover:scale-105 transition-transform duration-300"
+              variants={cardVariants}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
+              className="bg-slate-800 rounded-xl overflow-hidden shadow-lg hover:shadow-blue-600/40 transition-all duration-300"
             >
-              {/* Certificate Image */}
               <div className="relative h-48 bg-slate-700">
-                {/* Replace with your actual certificate image */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <img
-                    src={certificate.image}
-                    alt={certificate.name}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
+                <img
+                  src={certificate.image}
+                  alt={certificate.name}
+                  className="w-full h-full object-cover"
+                />
               </div>
-
-              {/* Certificate Details */}
               <div className="p-6">
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-sm font-medium text-blue-400">
-                    {certificate.issuer}
-                  </span>
-                  <span className="text-sm text-gray-400">
-                    {certificate.date}
-                  </span>
+                  <span className="text-sm font-medium text-blue-400">{certificate.issuer}</span>
+                  <span className="text-sm text-gray-400">{certificate.date}</span>
                 </div>
-                <h3 className="text-xl font-semibold text-white mb-2">
-                  {certificate.name}
-                </h3>
-                <p className="text-gray-400 text-sm mb-4">
-                  Credential ID: {certificate.credential}
-                </p>
-                <div className="flex items-center justify-between">
-                  <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-900 text-blue-300">
-                    {certificate.category}
-                  </span>
-                  <a
-                    href={certificate.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-blue-400 hover:text-blue-300 text-sm font-medium"
-                  >
-                    Verify →
-                  </a>
-                </div>
+                <h3 className="text-xl font-semibold text-white mb-2">{certificate.name}</h3>
+                {certificate.credential && (
+                  <p className="text-gray-400 text-sm mb-4">Credential ID: {certificate.credential}</p>
+                )}
+                {certificate.link && (
+                  <div className="text-right">
+                    <a
+                      href={certificate.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-400 hover:text-blue-300 text-sm font-medium"
+                    >
+                      Verify →
+                    </a>
+                  </div>
+                )}
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* Empty State */}
         {filteredCertificates.length === 0 && (
           <div className="text-center py-12">
-            <p className="text-gray-400">
-              No certificates found matching your criteria.
-            </p>
+            <p className="text-gray-400">No certificates found matching your search.</p>
           </div>
         )}
       </div>
@@ -184,4 +157,4 @@ const CertificatesPage = () => {
   );
 };
 
-export default CertificatesPage; 
+export default CertificatesPage;

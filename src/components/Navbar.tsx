@@ -1,7 +1,10 @@
 'use client';
+
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Menu, X, ChevronDown } from 'lucide-react'; // Lucide for modern icons
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -11,10 +14,8 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const isScrolled = window.scrollY > 20;
-      setScrolled(isScrolled);
+      setScrolled(window.scrollY > 20);
     };
-
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -29,128 +30,100 @@ const Navbar = () => {
   };
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${
-      scrolled ? 'bg-slate-900/95 backdrop-blur-sm shadow-lg' : 'bg-transparent'
-    }`}>
-      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <Link href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
-          <span className="self-center text-4xl font-bold text-white">DH</span>
+    <motion.nav
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ type: 'spring', stiffness: 100, damping: 15 }}
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+        scrolled ? 'bg-slate-900/80 backdrop-blur-md shadow-lg' : 'bg-transparent'
+      }`}
+    >
+      <div className="max-w-screen-xl flex items-center justify-between mx-auto px-4 py-3">
+        {/* Logo */}
+        <Link href="/" className="text-4xl font-extrabold text-white tracking-widest">
+          DH
         </Link>
+
+        {/* Mobile Menu Button */}
         <button
           onClick={toggleMenu}
-          type="button"
-          className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-white rounded-lg md:hidden hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-200"
-          aria-controls="navbar-dropdown"
-          aria-expanded={isMenuOpen}
+          className="md:hidden text-white focus:outline-none"
         >
-          <span className="sr-only">Open main menu</span>
-          <svg
-            className="w-5 h-5"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 17 14"
-          >
-            <path
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M1 1h15M1 7h15M1 13h15"
-            />
-          </svg>
+          {isMenuOpen ? <X className="h-7 w-7" /> : <Menu className="h-7 w-7" />}
         </button>
-        <div
-          className={`${
-            isMenuOpen ? 'block' : 'hidden'
-          } w-full md:block md:w-auto`}
-          id="navbar-dropdown"
-        >
-          <ul className={`flex flex-col font-medium p-4 md:p-0 mt-4 rounded-lg md:space-x-1 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 
-            ${scrolled ? 'md:bg-transparent' : 'bg-slate-900/95 md:bg-transparent'} 
-            ${isMenuOpen ? 'bg-slate-900/95 backdrop-blur-sm' : ''}`}>
-            <li>
-              <Link
-                href="/"
-                className={`block py-2 px-3 rounded-md md:p-3 transition-colors text-lg ${
-                  pathname === '/' ? 'text-blue-500' : 'text-white hover:text-blue-500'
-                }`}
-              >
-                Home
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/#about"
-                className="block py-2 px-3 text-white hover:text-blue-500 rounded-md md:p-3 transition-colors text-lg"
-              >
-                About
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/#projects"
-                className="block py-2 px-3 text-white hover:text-blue-500 rounded-md md:p-3 transition-colors text-lg"
-              >
-                Projects
-              </Link>
-            </li>
+
+        {/* Desktop Menu */}
+        <div className={`w-full md:flex md:items-center md:w-auto ${isMenuOpen ? 'block' : 'hidden'}`}>
+          <ul className="flex flex-col md:flex-row md:space-x-6 mt-4 md:mt-0 text-lg">
+            {[
+              { name: 'Home', href: '/' },
+              { name: 'About', href: '/#about' },
+              { name: 'Projects', href: '/#projects' }
+            ].map((link) => (
+              <li key={link.name}>
+                <Link
+                  href={link.href}
+                  className={`block py-2 px-3 rounded-md transition-all duration-300 ${
+                    pathname === link.href
+                      ? 'text-blue-500'
+                      : 'text-white hover:text-blue-400'
+                  }`}
+                >
+                  {link.name}
+                </Link>
+              </li>
+            ))}
+
+            {/* Dropdown */}
             <li className="relative">
               <button
                 onClick={toggleDropdown}
-                className="flex items-center py-2 px-3 text-white hover:text-blue-500 rounded-md md:p-3 transition-colors text-lg"
+                className="flex items-center gap-1 py-2 px-3 text-white hover:text-blue-400 transition-colors"
               >
-                More
-                <svg
-                  className={`w-4 h-4 ml-2 transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`}
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-                </svg>
+                More <ChevronDown className={`w-4 h-4 transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`} />
               </button>
-              <div
-                className={`${
-                  isDropdownOpen ? 'block' : 'hidden'
-                } md:absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-slate-800 ring-1 ring-black ring-opacity-5`}
-              >
-                <div className="py-1" role="menu" aria-orientation="vertical">
-                  <Link
-                    href="/certificates"
-                    className={`block px-4 py-2 text-base transition-colors ${
-                      pathname === '/certificates' 
-                        ? 'bg-slate-700 text-white' 
-                        : 'text-gray-300 hover:bg-slate-700 hover:text-white'
-                    }`}
-                    role="menuitem"
-                    onClick={() => setIsDropdownOpen(false)}
+
+              <AnimatePresence>
+                {isDropdownOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.2 }}
+                    className="absolute md:absolute left-0 mt-2 w-48 bg-slate-800 text-gray-300 rounded-lg shadow-lg ring-1 ring-black ring-opacity-20 z-50"
                   >
-                    Certificates
-                  </Link>
-                  <Link
-                    href="https://medium.com/@daiwiikharihar17147"
-                    className="block px-4 py-2 text-base text-gray-300 hover:bg-slate-700 hover:text-white transition-colors"
-                    role="menuitem"
-                    onClick={() => setIsDropdownOpen(false)}
-                  >
-                    Blog
-                  </Link>
-                  <Link
-                    href="/designs"
-                    className="block px-4 py-2 text-base text-gray-300 hover:bg-slate-700 hover:text-white transition-colors"
-                    role="menuitem"
-                    onClick={() => setIsDropdownOpen(false)}
-                  >
-                    Designs
-                  </Link>
-                </div>
-              </div>
+                    <Link
+                      href="/certificates"
+                      onClick={() => setIsDropdownOpen(false)}
+                      className={`block px-4 py-2 hover:bg-slate-700 transition`}
+                    >
+                      Certificates
+                    </Link>
+                    <Link
+                      href="https://medium.com/@daiwiikharihar17147"
+                      target="_blank"
+                      onClick={() => setIsDropdownOpen(false)}
+                      className="block px-4 py-2 hover:bg-slate-700 transition"
+                    >
+                      Blog
+                    </Link>
+                    <Link
+                      href="/designs"
+                      onClick={() => setIsDropdownOpen(false)}
+                      className="block px-4 py-2 hover:bg-slate-700 transition"
+                    >
+                      Designs
+                    </Link>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </li>
+
+            {/* Contact Button */}
             <li>
               <Link
                 href="/#contact"
-                className="block py-3.5 px-4 text-white bg-blue-600 hover:bg-blue-700 rounded-full md:ml-2 transition-colors text-center text-lg"
+                className="mt-2 md:mt-0 block bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-full text-center transition-colors duration-300"
               >
                 Contact Me
               </Link>
@@ -158,8 +131,8 @@ const Navbar = () => {
           </ul>
         </div>
       </div>
-    </nav>
+    </motion.nav>
   );
 };
 
-export default Navbar; 
+export default Navbar;
