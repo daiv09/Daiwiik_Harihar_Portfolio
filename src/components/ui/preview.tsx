@@ -1,3 +1,11 @@
+import { AiFillDollarCircle } from "react-icons/ai";
+import { BsClipboardDataFill } from "react-icons/bs";
+import { BiSolidReport } from "react-icons/bi";
+import { HiMiniDocumentArrowUp, HiDocumentText } from "react-icons/hi2";
+import { RiFilePaper2Fill } from "react-icons/ri";
+import { Radar } from "@/components/ui/radar"; // or wherever your Radar component is
+import { IconContainer } from "@/components/ui/IconContainer"; // Adjust path accordingly
+
 <div className="relative flex h-96 w-full flex-col items-center justify-center space-y-4 overflow-hidden px-4">
 <div className="mx-auto w-full max-w-3xl">
   <div className="flex w-full  items-center justify-center space-x-10 md:justify-between md:space-x-0 ">
@@ -35,7 +43,7 @@
     <IconContainer
       delay={0.6}
       text="GitHub Integration"
-      icon={<HiDocumentReport className=" h-8 w-8 text-slate-600" />}
+      icon={<HiDocumentText className=" h-8 w-8 text-slate-600" />}
     />
     <IconContainer
       delay={0.7}

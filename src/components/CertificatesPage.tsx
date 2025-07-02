@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 const certificatesData = [
   {
@@ -114,7 +115,7 @@ const CertificatesPage = () => {
               className="bg-slate-800 rounded-xl overflow-hidden shadow-lg hover:shadow-blue-600/40 transition-all duration-300"
             >
               <div className="relative h-48 bg-slate-700">
-                <img
+                <Image
                   src={certificate.image}
                   alt={certificate.name}
                   className="w-full h-full object-cover"

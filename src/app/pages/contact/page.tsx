@@ -7,37 +7,40 @@ const Contact = () => {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [isSending, setIsSending] = useState(false);
 
-  const handleChange = (e: any) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
+  const handleChange = (
+  e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+) => {
+  setForm({ ...form, [e.target.name]: e.target.value });
+};
 
-  const handleSubmit = async (e: any) => {
-    e.preventDefault();
-    setIsSending(true);
-    toast.loading("Sending message...");
+const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+  setIsSending(true);
+  toast.loading("Sending message...");
 
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
-      });
+  try {
+    const res = await fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(form),
+    });
 
-      if (res.ok) {
-        toast.dismiss();
-        toast.success("Message sent successfully!");
-        setForm({ name: "", email: "", message: "" });
-      } else {
-        toast.dismiss();
-        toast.error("Failed to send message. Try again.");
-      }
-    } catch (error) {
+    if (res.ok) {
       toast.dismiss();
-      toast.error("Something went wrong. Please try again.");
-    } finally {
-      setIsSending(false);
+      toast.success("Message sent successfully!");
+      setForm({ name: "", email: "", message: "" });
+    } else {
+      toast.dismiss();
+      toast.error("Failed to send message. Try again.");
     }
-  };
+  } catch (error) {
+    toast.dismiss();
+    toast.error("Something went wrong. Please try again.");
+  } finally {
+    setIsSending(false);
+  }
+};
+
 
   return (
     <div className="h-screen overflow-hidden bg-slate-900 text-white flex flex-col">

@@ -1,4 +1,4 @@
-"use client"; // If you're using Next.js App Router
+"use client";
 
 import { useEffect } from "react";
 import AOS from "aos";
@@ -63,7 +63,7 @@ export default function Home() {
             <div className="space-y-6" data-aos="fade-right">
               <p className="text-gray-300 leading-relaxed">
                 I&apos;m a dedicated student passionate about technology and
-                innovation. Currently pursuing my B.Tech degree, I'm focused on
+                innovation. Currently pursuing my B.Tech degree, I&apos;m focused on
                 building a strong foundation in software development and
                 engineering principles.
               </p>
@@ -188,7 +188,7 @@ export default function Home() {
             Get In Touch
           </h2>
           <p className="text-gray-300 mb-8">
-            I'm always open to discussing new projects, creative ideas, or
+            I&apos;m always open to discussing new projects, creative ideas, or
             opportunities to be part of your visions.
           </p>
           <a
