@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import AOS from "aos";
-import {motion} from "framer-motion";
+import { motion } from "framer-motion";
 import "aos/dist/aos.css";
 
 import { Boxes } from "../components/ui/background-boxes";
@@ -34,7 +34,7 @@ export default function Home() {
             Daiwiik Harihar
           </h1>
           <p className="text-xl md:text-2xl text-neutral-300 font-light">
-            A passionate B.Tech Student at Dr. Vishwanath Karad MIT WPU, Pune
+            A passionate B. Tech Student at Dr. Vishwanath Karad MIT WPU, Pune
           </p>
           <div className="flex gap-4 justify-center">
             <a
@@ -73,9 +73,9 @@ export default function Home() {
               <div className="grid grid-cols-2 gap-4">
                 <div className="p-4 bg-slate-700 rounded-lg" data-aos="fade-up">
                   <h3 className="text-xl font-semibold text-white mb-2">
-                    Education
+                    Computer Science Engineering
                   </h3>
-                  <p className="text-gray-300">B.Tech Student</p>
+                  <p className="text-gray-300">TY Student</p>
                 </div>
                 <div className="p-4 bg-slate-700 rounded-lg" data-aos="fade-up">
                   <h3 className="text-xl font-semibold text-white mb-2">
@@ -89,19 +89,24 @@ export default function Home() {
               <div className="absolute inset-0 bg-gradient-to-br from-blue-600 to-purple-600 opacity-90 rounded-lg"></div>
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="text-center">
-                  <h3 className="text-2xl font-bold text-white mb-4">My Skills</h3>
+                  <h3 className="text-2xl font-bold text-white mb-4">
+                    My Skills
+                  </h3>
                   <div className="flex flex-wrap gap-2 justify-center">
                     <span className="px-3 py-1 bg-white/20 rounded-full text-white">
-                      Web Development
+                      Full Stack Development
                     </span>
                     <span className="px-3 py-1 bg-white/20 rounded-full text-white">
-                      Python
+                      Next JS
                     </span>
                     <span className="px-3 py-1 bg-white/20 rounded-full text-white">
                       JavaScript
                     </span>
                     <span className="px-3 py-1 bg-white/20 rounded-full text-white">
                       React
+                    </span>
+                    <span className="px-3 py-1 bg-white/20 rounded-full text-white">
+                      React Native
                     </span>
                   </div>
                 </div>
@@ -121,21 +126,23 @@ export default function Home() {
             Featured Projects
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Project Card 1 */}
             <div
-              className="bg-slate-800 rounded-xl overflow-hidden hover:transform hover:scale-105 transition-transform duration-300"
+              className="bg-slate-800 rounded-xl overflow-hidden shadow-lg hover:transform hover:scale-105 transition-transform duration-300"
               data-aos="flip-left"
             >
-              <div className="h-48 bg-gradient-to-r from-blue-500 to-purple-500"></div>
+              <div className="h-48 bg-gradient-to-r from-blue-500 to-purple-500 animate-pulse"></div>
               <div className="p-6">
                 <h3 className="text-xl font-semibold text-white mb-2">
                   VUI for Automation in Workplaces
                 </h3>
                 <p className="text-gray-400 mb-4">
-                  A brief description of your first project and its key
-                  features.
+                  Developed a voice-controlled interface using WebSpeech API for
+                  hands-free automation in corporate environments.
                 </p>
-                <a href="#" className="text-blue-400 hover:text-blue-300">
+                <a
+                  href="https://github.com/daiv09/V1.0.0"
+                  className="text-blue-400 hover:text-blue-300"
+                >
                   Learn More →
                 </a>
               </div>
@@ -149,13 +156,17 @@ export default function Home() {
               <div className="h-48 bg-gradient-to-r from-green-500 to-blue-500"></div>
               <div className="p-6">
                 <h3 className="text-xl font-semibold text-white mb-2">
-                  Project Two
+                  Typing Tutor
                 </h3>
                 <p className="text-gray-400 mb-4">
-                  A brief description of your second project and its key
-                  features.
+                  A C++ based Typing Tutor that helps users improve their typing
+                  speed and accuracy through real-time feedback and progress
+                  tracking.
                 </p>
-                <a href="#" className="text-blue-400 hover:text-blue-300">
+                <a
+                  href="https://github.com/daiv09/Typing-Tutor"
+                  className="text-blue-400 hover:text-blue-300"
+                >
                   Learn More →
                 </a>
               </div>
@@ -169,11 +180,12 @@ export default function Home() {
               <div className="h-48 bg-gradient-to-r from-purple-500 to-pink-500"></div>
               <div className="p-6">
                 <h3 className="text-xl font-semibold text-white mb-2">
-                  Project Three
+                  SkyAlign – IoT-Based Autonomous Satellite Ground Tracking Ground Station
                 </h3>
                 <p className="text-gray-400 mb-4">
-                  A brief description of your third project and its key
-                  features.
+                  A smart IoT module for rescue missions that uses GPS to
+                  transmit precise coordinates and controls dual motors for 360°
+                  antenna alignment.
                 </p>
                 <a href="#" className="text-blue-400 hover:text-blue-300">
                   Learn More →
@@ -201,7 +213,10 @@ export default function Home() {
             Send Me a Message
           </a>
           <div className="mt-12 flex justify-center space-x-6">
-            <a href="https://github.com/daiv09" className="text-gray-400 hover:text-white transition-colors">
+            <a
+              href="https://github.com/daiv09"
+              className="text-gray-400 hover:text-white transition-colors"
+            >
               <span className="sr-only">GitHub</span>
               <svg className="h-8 w-8" fill="currentColor" viewBox="0 0 24 24">
                 <path
@@ -211,7 +226,10 @@ export default function Home() {
                 />
               </svg>
             </a>
-            <a href="www.linkedin.com/in/daiwiik-harihar" className="text-gray-400 hover:text-white transition-colors">
+            <a
+              href="www.linkedin.com/in/daiwiik-harihar"
+              className="text-gray-400 hover:text-white transition-colors"
+            >
               <span className="sr-only">LinkedIn</span>
               <svg className="h-8 w-8" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
