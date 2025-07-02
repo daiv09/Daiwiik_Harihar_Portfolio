@@ -7,11 +7,11 @@ const Contact = () => {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [isSending, setIsSending] = useState(false);
 
-  const handleChange = (e) => {
+  const handleChange = (e: any) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
     setIsSending(true);
     toast.loading("Sending message...");
@@ -71,7 +71,7 @@ const Contact = () => {
               value={form.message}
               onChange={handleChange}
               required
-              rows="5"
+              rows={5}
               className="w-full p-3 rounded-xl bg-slate-800 border border-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
             />
             <button

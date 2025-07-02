@@ -2,12 +2,9 @@
 
 import { useEffect } from "react";
 import AOS from "aos";
-import {motion} from "framer-motion";
 import "aos/dist/aos.css";
 
 import { Boxes } from "../components/ui/background-boxes";
-import { cn } from "@/lib/utils";
-import Image from "next/image";
 import Navbar from "@/components/Navbar";
 
 export default function Home() {
