@@ -8,7 +8,7 @@ const Navbar = () => {
   const [dashboardOpen, setDashboardOpen] = useState(false);
   const pathname = usePathname();
 
-  const getLinkClass = (path) =>
+  const getLinkClass = (path: string) =>
     `block py-2 px-3 rounded-sm md:p-0 ${
       pathname === path
         ? "text-white bg-blue-700 md:bg-transparent md:text-blue-700 md:dark:text-blue-500"
