@@ -1,4 +1,4 @@
-"use client"; // If you're using Next.js App Router
+"use client";
 
 import { useEffect } from "react";
 import AOS from "aos";

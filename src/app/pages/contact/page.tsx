@@ -7,37 +7,41 @@ const Contact = () => {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [isSending, setIsSending] = useState(false);
 
-  const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
+  const handleChange = (
+  e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+) => {
+  setForm({ ...form, [e.target.name]: e.target.value });
+};
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsSending(true);
-    toast.loading("Sending message...");
+const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+  setIsSending(true);
+  toast.loading("Sending message...");
 
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
-      });
+  try {
+    const res = await fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(form),
+    });
 
-      if (res.ok) {
-        toast.dismiss();
-        toast.success("Message sent successfully!");
-        setForm({ name: "", email: "", message: "" });
-      } else {
-        toast.dismiss();
-        toast.error("Failed to send message. Try again.");
-      }
-    } catch (error) {
+    if (res.ok) {
       toast.dismiss();
-      toast.error("Something went wrong. Please try again.");
-    } finally {
-      setIsSending(false);
+      toast.success("Message sent successfully!");
+      setForm({ name: "", email: "", message: "" });
+    } else {
+      toast.dismiss();
+      toast.error("Failed to send message. Try again.");
     }
-  };
+  } catch (error) {
+    console.log("Error sending message:", error);
+    toast.dismiss();
+    toast.error("Something went wrong. Please try again.");
+  } finally {
+    setIsSending(false);
+  }
+};
+
 
   return (
     <div className="h-screen overflow-hidden bg-slate-900 text-white flex flex-col">
@@ -71,7 +75,7 @@ const Contact = () => {
               value={form.message}
               onChange={handleChange}
               required
-              rows="5"
+              rows={5}
               className="w-full p-3 rounded-xl bg-slate-800 border border-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
             />
             <button
