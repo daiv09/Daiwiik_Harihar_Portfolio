@@ -1,69 +1,95 @@
 "use client";
-import Navbar from "@/components/ui/navbar";
-import React from "react";
-import { FaEnvelope, FaPhoneAlt, FaLinkedin } from "react-icons/fa";
+import React, { useState } from "react";
 import Footer from "@/components/ui/footer";
+import toast, { Toaster } from "react-hot-toast";
 
 const Contact = () => {
+  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [isSending, setIsSending] = useState(false);
+
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSending(true);
+    toast.loading("Sending message...");
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+
+      if (res.ok) {
+        toast.dismiss();
+        toast.success("Message sent successfully!");
+        setForm({ name: "", email: "", message: "" });
+      } else {
+        toast.dismiss();
+        toast.error("Failed to send message. Try again.");
+      }
+    } catch (error) {
+      toast.dismiss();
+      toast.error("Something went wrong. Please try again.");
+    } finally {
+      setIsSending(false);
+    }
+  };
+
   return (
-    <div>
-      <Navbar />
-      <div className="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 text-white flex flex-col items-center justify-center px-4 py-10">
-        <h1 className="text-4xl font-bold mb-6 text-center">Contact Me</h1>
+    <div className="h-screen overflow-hidden bg-slate-900 text-white flex flex-col">
+      <Toaster position="top-center" />
 
-        <p className="text-lg mb-12 text-center max-w-2xl text-gray-300">
-          Always excited to connect! Whether it&apos;s for collaboration,
-          questions, or just saying hi — feel free to reach out through any of
-          the channels below.
-        </p>
-
-        <div className="w-full max-w-2xl space-y-6">
-          {/* Email */}
-          <div className="flex items-center gap-4 bg-gray-700 p-6 rounded-xl shadow-lg hover:bg-gray-600 transition-all duration-300">
-            <FaEnvelope className="text-2xl text-blue-400" />
-            <div>
-              <p className="text-sm text-gray-300">Email</p>
-              <a
-                href="mailto:daiwiikharihar@google.com"
-                className="text-lg font-medium hover:underline"
-              >
-                daiwiikharihar@google.com
-              </a>
-            </div>
-          </div>
-
-          {/* Phone */}
-          <div className="flex items-center gap-4 bg-gray-700 p-6 rounded-xl shadow-lg hover:bg-gray-600 transition-all duration-300">
-            <FaPhoneAlt className="text-2xl text-green-400" />
-            <div>
-              <p className="text-sm text-gray-300">Phone</p>
-              <a
-                href="tel:+917755921891"
-                className="text-lg font-medium hover:underline"
-              >
-                +91 77559 21891
-              </a>
-            </div>
-          </div>
-
-          {/* LinkedIn */}
-          <div className="flex items-center gap-4 bg-gray-700 p-6 rounded-xl shadow-lg hover:bg-gray-600 transition-all duration-300">
-            <FaLinkedin className="text-2xl text-blue-500" />
-            <div>
-              <p className="text-sm text-gray-300">LinkedIn</p>
-              <a
-                href="https://www.linkedin.com/in/daiwiik-harihar-bb6215344/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-lg font-medium hover:underline"
-              >
-                linkedin.com/in/daiwiik-harihar
-              </a>
-            </div>
-          </div>
+      <div className="flex-grow flex flex-col justify-center">
+        <div className="max-w-xl mx-auto px-4 py-10">
+          <h1 className="text-4xl font-bold mb-8 text-center">Contact Me</h1>
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <input
+              type="text"
+              name="name"
+              placeholder="Your Name"
+              value={form.name}
+              onChange={handleChange}
+              required
+              className="w-full p-3 rounded-xl bg-slate-800 border border-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            />
+            <input
+              type="email"
+              name="email"
+              placeholder="Your Email"
+              value={form.email}
+              onChange={handleChange}
+              required
+              className="w-full p-3 rounded-xl bg-slate-800 border border-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            />
+            <textarea
+              name="message"
+              placeholder="Your Message"
+              value={form.message}
+              onChange={handleChange}
+              required
+              rows="5"
+              className="w-full p-3 rounded-xl bg-slate-800 border border-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            />
+            <button
+              type="submit"
+              disabled={isSending}
+              className={`w-full bg-indigo-600 hover:bg-indigo-700 transition px-5 py-3 rounded-xl font-semibold ${
+                isSending ? "opacity-50 cursor-not-allowed" : ""
+              }`}
+            >
+              {isSending ? "Sending..." : "Send Message"}
+            </button>
+          </form>
         </div>
       </div>
-      <Footer />
+
+      <div className="-mt-6">
+        <Footer />
+      </div>
     </div>
   );
 };

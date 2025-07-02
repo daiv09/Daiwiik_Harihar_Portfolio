@@ -65,7 +65,7 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="space-y-6" data-aos="fade-right">
               <p className="text-gray-300 leading-relaxed">
-                I'm a dedicated student passionate about technology and
+                I&apos;m a dedicated student passionate about technology and
                 innovation. Currently pursuing my B.Tech degree, I'm focused on
                 building a strong foundation in software development and
                 engineering principles.
