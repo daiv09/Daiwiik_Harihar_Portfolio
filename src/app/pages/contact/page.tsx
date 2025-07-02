@@ -34,6 +34,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
       toast.error("Failed to send message. Try again.");
     }
   } catch (error) {
+    console.log("Error sending message:", error);
     toast.dismiss();
     toast.error("Something went wrong. Please try again.");
   } finally {
