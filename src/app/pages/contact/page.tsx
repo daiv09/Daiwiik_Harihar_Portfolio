@@ -1,6 +1,5 @@
 "use client";
 import React, { useState } from "react";
-import Footer from "@/components/ui/footer";
 import toast, { Toaster } from "react-hot-toast";
 
 const Contact = () => {
@@ -89,10 +88,6 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
             </button>
           </form>
         </div>
-      </div>
-
-      <div className="-mt-6">
-        <Footer />
       </div>
     </div>
   );

@@ -224,7 +224,7 @@ export default function Home() {
               </svg>
             </a>
             <a
-              href="www.linkedin.com/in/daiwiik-harihar"
+              href="https://www.linkedin.com/in/daiwiik-harihar/"
               className="text-gray-400 hover:text-white transition-colors"
             >
               <span className="sr-only">LinkedIn</span>
