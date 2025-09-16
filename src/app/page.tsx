@@ -193,8 +193,49 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Publications Section */}
+      <section id="publications" className="py-20 bg-slate-800">
+        <div className="max-w-4xl mx-auto px-4">
+          <h2
+            className="text-3xl md:text-4xl font-bold text-white mb-12 text-center"
+            data-aos="fade-up"
+          >
+            Publications
+          </h2>
+
+          {/* Paper Card */}
+          <div
+            className="relative bg-slate-900 border-l-4 border-blue-500 rounded-lg shadow-md p-8 hover:shadow-xl transition-shadow duration-300"
+            data-aos="fade-right"
+          >
+            {/* Floating Label */}
+            <span className="absolute -top-3 left-6 bg-blue-500 text-white text-xs font-semibold px-3 py-1 rounded-full shadow-md">
+              Published
+            </span>
+
+            <h3 className="text-2xl font-semibold text-white mb-3">
+              Voice-Based User Interface for Hands-Free Data Entry and Automation at Workplaces
+            </h3>
+
+            <p className="text-gray-400 mb-4 leading-relaxed">
+              Published in <span className="font-semibold text-gray-200">MethodsX</span>.
+              Research on improving workplace efficiency using a voice-enabled automation interface.
+            </p>
+
+            <a
+              href="https://www.sciencedirect.com/science/article/pii/S2215016125004406"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block mt-2 text-blue-400 hover:text-blue-300 font-medium transition-colors"
+            >
+              📖 Read Publication
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* Contact Section */}
-      <section id="contact" className="py-20 bg-slate-800">
+      <section id="contact" className="py-20 bg-slate-900">
         <div className="max-w-4xl mx-auto px-4 text-center" data-aos="fade-up">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-8">
             Get In Touch
