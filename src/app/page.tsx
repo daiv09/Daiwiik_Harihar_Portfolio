@@ -3,9 +3,11 @@
 import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-
+import FadeContent from "@/components/ui/fade-content";
 import { Boxes } from "../components/ui/background-boxes";
 import Navbar from "@/components/Navbar";
+import TrueFocus from "@/components/ui/true-focus";
+import ScrollVelocity from "@/components/ui/scroll-velocity";
 
 export default function Home() {
   useEffect(() => {
@@ -27,12 +29,22 @@ export default function Home() {
           className="relative z-20 text-center space-y-8 max-w-4xl px-4"
           data-aos="fade-up"
         >
-          <h1 className="text-4xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-500">
-            Daiwiik Harihar
+          <h1 className="text-4xl md:text-6xl font-bold text-white">
+            <TrueFocus
+              sentence="Daiwiik Harihar"
+              manualMode={false}
+              blurAmount={5}
+              borderColor="blue"
+              animationDuration={2}
+              pauseBetweenAnimations={1}
+            />
           </h1>
-          <p className="text-xl md:text-2xl text-neutral-300 font-light">
-            A passionate B. Tech Student at Dr. Vishwanath Karad MIT WPU, Pune
-          </p>
+          <FadeContent blur={true} duration={1000} easing="ease-out" initialOpacity={0}>
+            {/* Anything placed inside this container will be fade into view */}
+            <p className="text-xl md:text-2xl text-neutral-300 font-light">
+              A passionate B. Tech Student at Dr. Vishwanath Karad MIT WPU, Pune
+            </p>
+          </FadeContent>
           <div className="flex gap-4 justify-center">
             <a
               href="#projects"
@@ -49,6 +61,16 @@ export default function Home() {
           </div>
         </div>
       </div>
+
+      {/* Scroll Section */}
+      <section className="py-12 bg-white">
+        <ScrollVelocity
+          texts={['Projects', 'Hackathons']}
+          velocity={100}
+          className="custom-scroll-text text-4xl font-bold text-slate-900"
+          numCopies={12}
+        />
+      </section>
 
       {/* About Section */}
       <section id="about" className="py-20 bg-slate-800">
