@@ -65,11 +65,10 @@ export default function Home() {
       {/* Scroll Section */}
       <section className="py-12 bg-white">
         <ScrollVelocity
-          texts={['Projects', 'Hackathons']}
-          velocity={100}
-          className="custom-scroll-text text-4xl font-bold text-slate-900"
-          numCopies={12}
-        />
+texts={['Projects', 'Hackathons']} 
+  velocity={100} 
+  className="custom-scroll-text"
+/>
       </section>
 
       {/* About Section */}
