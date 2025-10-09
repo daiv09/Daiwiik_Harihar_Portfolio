@@ -21,11 +21,11 @@ interface FocusRect {
 const TrueFocus: React.FC<TrueFocusProps> = ({
     sentence = 'True Focus',
     manualMode = false,
-    blurAmount = 5,
+    blurAmount = 0.1,
     borderColor = 'green',
     glowColor = 'rgba(0, 255, 0, 0.6)',
-    animationDuration = 0.5,
-    pauseBetweenAnimations = 1
+    animationDuration = 1,
+    pauseBetweenAnimations = 0.5
 }) => {
     const words = sentence.split(' ');
     const [currentIndex, setCurrentIndex] = useState<number>(0);

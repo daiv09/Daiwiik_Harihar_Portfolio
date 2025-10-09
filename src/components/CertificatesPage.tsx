@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { IKContext, IKImage } from "imagekitio-react";
 
 // Certificates data
 const certificatesData = [
@@ -11,7 +10,7 @@ const certificatesData = [
     name: "Data Structures & Algorithms Using C++",
     issuer: "EdX",
     date: "September 7, 2024",
-    image: "/Portfolio_Website/DSA.jpg",
+    image: "https://ik.imagekit.io/kqmrslzuq/Portfolio_Website/DSA.jpg",
     credential: "4ca80149ef624317a5bfc82af5e69aee",
     link: "https://courses.edx.org/certificates/4ca80149ef624317a5bfc82af5e69aee",
   },
@@ -20,7 +19,7 @@ const certificatesData = [
     name: "Full Stack Development Course",
     issuer: "mycaptain",
     date: "September 2023",
-    image: "/Portfolio_Website/FullStackDevelopment.jpg",
+    image: "https://ik.imagekit.io/kqmrslzuq/Portfolio_Website/FullStackDevelopment.jpg",
     credential: "2EM044UI5S7VS",
   },
   {
@@ -28,17 +27,14 @@ const certificatesData = [
     name: "Coding Interview Preparation",
     issuer: "Coursera",
     date: "November 19, 2024",
-    image: "/Portfolio_Website/CodingInterviewPrep.jpg",
+    image: "https://ik.imagekit.io/kqmrslzuq/Portfolio_Website/CodingInterviewPrep.jpg",
     link: "https://coursera.org/verify/EIAKJLNKM21T",
   },
 ];
 
-// Animation variants
 const containerVariants = {
   hidden: {},
-  show: {
-    transition: { staggerChildren: 0.2 },
-  },
+  show: { transition: { staggerChildren: 0.2 } },
 };
 
 const cardVariants = {
@@ -49,7 +45,6 @@ const cardVariants = {
 const CertificatesPage = () => {
   const [searchQuery, setSearchQuery] = useState("");
 
-  // Search filter
   const filteredCertificates = certificatesData.filter(
     (cert) =>
       cert.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -102,67 +97,62 @@ const CertificatesPage = () => {
           </div>
         </div>
 
-          <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-            variants={containerVariants}
-            initial="hidden"
-            animate="show"
-          >
-            {filteredCertificates.map((certificate) => (
-              <motion.div
-                key={certificate.id}
-                variants={cardVariants}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.98 }}
-                transition={{ duration: 0.4, ease: "easeOut" }}
-                className="bg-slate-800 rounded-xl overflow-hidden shadow-lg hover:shadow-blue-600/40 transition-all duration-300"
-              >
-                <div className="relative h-48 bg-slate-700">
-                  <IKContext
-                    urlEndpoint={process.env.NEXT_PUBLIC_URL_ENDPOINT!} // no fallback ""
-                  >
-                    <IKImage
-                      path="Portfolio_Website/DSA.jpg"  // uploaded to ImageKit
-                      alt="DSA Certificate"
-                      transformation={[{ width: 400, height: 200 }]}
-                      className="w-full h-full object-cover"
-                    />
-                  </IKContext>
-
+        {/* Certificates Grid */}
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          variants={containerVariants}
+          initial="hidden"
+          animate="show"
+        >
+          {filteredCertificates.map((certificate) => (
+            <motion.div
+              key={certificate.id}
+              variants={cardVariants}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
+              className="bg-slate-800 rounded-xl overflow-hidden shadow-lg hover:shadow-blue-600/40 transition-all duration-300"
+            >
+              <div className="relative h-48 bg-slate-700">
+                <img
+                  src={certificate.image}
+                  alt={certificate.name}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="p-6">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-sm font-medium text-blue-400">
+                    {certificate.issuer}
+                  </span>
+                  <span className="text-sm text-gray-400">
+                    {certificate.date}
+                  </span>
                 </div>
-                <div className="p-6">
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-sm font-medium text-blue-400">
-                      {certificate.issuer}
-                    </span>
-                    <span className="text-sm text-gray-400">
-                      {certificate.date}
-                    </span>
+                <h3 className="text-xl font-semibold text-white mb-2">
+                  {certificate.name}
+                </h3>
+                {certificate.credential && (
+                  <p className="text-gray-400 text-sm mb-4">
+                    Credential ID: {certificate.credential}
+                  </p>
+                )}
+                {certificate.link && (
+                  <div className="text-right">
+                    <a
+                      href={certificate.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-400 hover:text-blue-300 text-sm font-medium"
+                    >
+                      Verify &rarr;
+                    </a>
                   </div>
-                  <h3 className="text-xl font-semibold text-white mb-2">
-                    {certificate.name}
-                  </h3>
-                  {certificate.credential && (
-                    <p className="text-gray-400 text-sm mb-4">
-                      Credential ID: {certificate.credential}
-                    </p>
-                  )}
-                  {certificate.link && (
-                    <div className="text-right">
-                      <a
-                        href={certificate.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-blue-400 hover:text-blue-300 text-sm font-medium"
-                      >
-                        Verify &rarr;
-                      </a>
-                    </div>
-                  )}
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
+                )}
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
 
         {/* Empty State */}
         {filteredCertificates.length === 0 && (

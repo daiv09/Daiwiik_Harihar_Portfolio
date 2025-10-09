@@ -19,9 +19,13 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "cdn-icons-png.flaticon.com",
       },
+      {
+        protocol: "https",
+        hostname: "ik.imagekit.io", // ✅ allow ImageKit images
+      },
     ],
-    dangerouslyAllowSVG: true, // Allows SVG images
-    contentSecurityPolicy: "default-src 'self'; img-src * data:;", // Secure external images
+    dangerouslyAllowSVG: true,
+    contentSecurityPolicy: "default-src 'self'; img-src * data:;",
   },
 };
 

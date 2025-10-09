@@ -13,7 +13,8 @@ export default function Home() {
   // Animation hooks for different sections
   const { ref: aboutRef, isInView: aboutInView } = useScrollAnimation();
   const { ref: projectsRef, isInView: projectsInView } = useScrollAnimation();
-  const { ref: publicationsRef, isInView: publicationsInView } = useScrollAnimation();
+  const { ref: publicationsRef, isInView: publicationsInView } =
+    useScrollAnimation();
   const { ref: contactRef, isInView: contactInView } = useScrollAnimation();
 
   return (
@@ -30,7 +31,7 @@ export default function Home() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <motion.h1 
+          <motion.h1
             className="text-4xl md:text-6xl font-bold text-white"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -45,8 +46,13 @@ export default function Home() {
               pauseBetweenAnimations={1}
             />
           </motion.h1>
-          <FadeContent blur={true} duration={1000} easing="ease-out" initialOpacity={0}>
-            <motion.p 
+          <FadeContent
+            blur={true}
+            duration={1000}
+            easing="ease-out"
+            initialOpacity={0}
+          >
+            <motion.p
               className="text-xl md:text-2xl text-neutral-300 font-light"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -55,7 +61,7 @@ export default function Home() {
               A passionate B. Tech Student at Dr. Vishwanath Karad MIT WPU, Pune
             </motion.p>
           </FadeContent>
-          <motion.div 
+          <motion.div
             className="flex gap-4 justify-center"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -64,7 +70,10 @@ export default function Home() {
             <motion.a
               href="#projects"
               className="px-6 py-3 rounded-full bg-blue-600 text-white hover:bg-blue-700 transition-colors"
-              whileHover={{ scale: 1.05, boxShadow: "0 10px 30px rgba(59, 130, 246, 0.3)" }}
+              whileHover={{
+                scale: 1.05,
+                boxShadow: "0 10px 30px rgba(59, 130, 246, 0.3)",
+              }}
               whileTap={{ scale: 0.95 }}
             >
               View My Work
@@ -72,7 +81,10 @@ export default function Home() {
             <motion.a
               href="#contact"
               className="px-6 py-3 rounded-full border border-white text-white hover:bg-white hover:text-slate-900 transition-colors"
-              whileHover={{ scale: 1.05, boxShadow: "0 10px 30px rgba(255, 255, 255, 0.2)" }}
+              whileHover={{
+                scale: 1.05,
+                boxShadow: "0 10px 30px rgba(255, 255, 255, 0.2)",
+              }}
               whileTap={{ scale: 0.95 }}
             >
               Contact Me
@@ -82,30 +94,58 @@ export default function Home() {
       </div>
 
       {/* Scroll Section with Enhanced Animation */}
-      <motion.section 
-        className="py-12 bg-gradient-to-r from-white via-gray-50 to-white relative overflow-hidden"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-        viewport={{ once: true, amount: 0.3 }}
-      >
-        {/* Subtle background pattern */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23000000' fill-opacity='0.05'%3E%3Cpath d='m0 40 40-40h20v20L20 60 0 40z'/%3E%3C/g%3E%3C/svg%3E")`,
-          }} />
-        </div>
-        <ScrollVelocity
-          texts={['Projects', 'Hackathons']} 
-          velocity={100} 
-          className="custom-scroll-text"
-        />
-      </motion.section>
+      <motion.section
+  className="py-12 bg-slate-800 relative overflow-hidden"
+  initial={{ opacity: 0 }}
+  whileInView={{ opacity: 1 }}
+  transition={{ duration: 0.8 }}
+  viewport={{ once: true, amount: 0.3 }}
+>
+  {/* Animated gradient background (same as About section) */}
+  <motion.div
+    className="absolute inset-0 opacity-10"
+    animate={{
+      backgroundPosition: ["0% 0%", "100% 100%"],
+    }}
+    transition={{
+      duration: 20,
+      repeat: Infinity,
+      repeatType: "reverse",
+      ease: "linear",
+    }}
+    style={{
+      backgroundImage: `linear-gradient(45deg, 
+        rgba(59, 130, 246, 0.1) 25%, 
+        transparent 25%, 
+        transparent 75%, 
+        rgba(139, 92, 246, 0.1) 75%, 
+        rgba(139, 92, 246, 0.1)), 
+        linear-gradient(-45deg, 
+        rgba(59, 130, 246, 0.1) 25%, 
+        transparent 25%, 
+        transparent 75%, 
+        rgba(139, 92, 246, 0.1) 75%, 
+        rgba(139, 92, 246, 0.1))`,
+      backgroundSize: "60px 60px",
+    }}
+  />
+
+  {/* ScrollVelocity content */}
+  <ScrollVelocity
+    texts={["Projects", "Hackathons"]}
+    velocity={100}
+    className="custom-scroll-text text-white"
+  />
+</motion.section>
 
       {/* About Section */}
-      <section id="about" className="py-20 bg-slate-800 relative overflow-hidden" ref={aboutRef}>
+      <section
+        id="about"
+        className="py-20 bg-slate-800 relative overflow-hidden"
+        ref={aboutRef}
+      >
         {/* Subtle animated background */}
-        <motion.div 
+        <motion.div
           className="absolute inset-0 opacity-10"
           animate={{
             backgroundPosition: ["0% 0%", "100% 100%"],
@@ -114,7 +154,7 @@ export default function Home() {
             duration: 20,
             repeat: Infinity,
             repeatType: "reverse",
-            ease: "linear"
+            ease: "linear",
           }}
           style={{
             backgroundImage: `linear-gradient(45deg, 
@@ -129,7 +169,7 @@ export default function Home() {
               transparent 75%, 
               rgba(139, 92, 246, 0.1) 75%, 
               rgba(139, 92, 246, 0.1))`,
-            backgroundSize: "60px 60px"
+            backgroundSize: "60px 60px",
           }}
         />
         <div className="max-w-6xl mx-auto px-4">
@@ -143,30 +183,34 @@ export default function Home() {
           </motion.h2>
           <div className="grid md:grid-cols-2 gap-12 items-center">
             {/* Text Content */}
-            <motion.div 
+            <motion.div
               className="space-y-6"
               initial={{ opacity: 0, x: -60 }}
-              animate={aboutInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -60 }}
+              animate={
+                aboutInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -60 }
+              }
               transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
             >
-              <motion.p 
+              <motion.p
                 className="text-gray-300 leading-relaxed text-lg"
                 initial={{ opacity: 0 }}
                 animate={aboutInView ? { opacity: 1 } : { opacity: 0 }}
                 transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
               >
                 I&apos;m a dedicated student passionate about technology and
-                innovation. Currently pursuing my B.Tech degree, I&apos;m focused on
-                building a strong foundation in software development and
-                engineering principles.
+                innovation. Currently pursuing my B.Tech degree, I&apos;m
+                focused on building a strong foundation in software development
+                and engineering principles.
               </motion.p>
-              
+
               {/* Info Cards with Stagger Animation */}
               <div className="grid grid-cols-2 gap-4">
-                <motion.div 
+                <motion.div
                   className="p-4 bg-slate-700 rounded-lg hover:bg-slate-600 transition-colors cursor-pointer"
                   initial={{ opacity: 0, y: 40 }}
-                  animate={aboutInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
+                  animate={
+                    aboutInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }
+                  }
                   transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
                   whileHover={{ scale: 1.05, rotate: 1 }}
                 >
@@ -175,10 +219,12 @@ export default function Home() {
                   </h3>
                   <p className="text-gray-300">TY Student</p>
                 </motion.div>
-                <motion.div 
+                <motion.div
                   className="p-4 bg-slate-700 rounded-lg hover:bg-slate-600 transition-colors cursor-pointer"
                   initial={{ opacity: 0, y: 40 }}
-                  animate={aboutInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
+                  animate={
+                    aboutInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }
+                  }
                   transition={{ duration: 0.6, delay: 0.8, ease: "easeOut" }}
                   whileHover={{ scale: 1.05, rotate: -1 }}
                 >
@@ -189,44 +235,62 @@ export default function Home() {
                 </motion.div>
               </div>
             </motion.div>
-            
+
             {/* Skills Section with Enhanced Animations */}
-            <motion.div 
+            <motion.div
               className="relative h-80 rounded-lg overflow-hidden group"
               initial={{ opacity: 0, x: 60 }}
-              animate={aboutInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 60 }}
+              animate={
+                aboutInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 60 }
+              }
               transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
               whileHover={{ scale: 1.02 }}
             >
-              <motion.div 
+              <motion.div
                 className="absolute inset-0 bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 opacity-90 rounded-lg"
-                animate={{ 
+                animate={{
                   background: [
                     "linear-gradient(135deg, #3B82F6, #8B5CF6, #EC4899)",
                     "linear-gradient(135deg, #8B5CF6, #EC4899, #3B82F6)",
-                    "linear-gradient(135deg, #EC4899, #3B82F6, #8B5CF6)"
-                  ]
+                    "linear-gradient(135deg, #EC4899, #3B82F6, #8B5CF6)",
+                  ],
                 }}
                 transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
               />
               <div className="absolute inset-0 flex items-center justify-center p-6">
                 <div className="text-center">
-                  <motion.h3 
+                  <motion.h3
                     className="text-2xl font-bold text-white mb-6"
                     initial={{ opacity: 0, y: 20 }}
-                    animate={aboutInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                    animate={
+                      aboutInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
+                    }
                     transition={{ delay: 0.8, duration: 0.6, ease: "easeOut" }}
                   >
                     My Skills
                   </motion.h3>
                   <div className="flex flex-wrap gap-2 justify-center">
-                    {["Full Stack Development", "Next JS", "JavaScript", "React", "React Native"].map((skill, index) => (
+                    {[
+                      "Full Stack Development",
+                      "Next JS",
+                      "JavaScript",
+                      "React",
+                      "React Native",
+                    ].map((skill, index) => (
                       <motion.span
                         key={skill}
                         className="px-3 py-1 bg-white/20 backdrop-blur rounded-full text-white hover:bg-white/30 transition-colors cursor-pointer"
                         initial={{ opacity: 0, y: 20 }}
-                        animate={aboutInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                        transition={{ delay: 1 + index * 0.1, duration: 0.6, ease: "easeOut" }}
+                        animate={
+                          aboutInView
+                            ? { opacity: 1, y: 0 }
+                            : { opacity: 0, y: 20 }
+                        }
+                        transition={{
+                          delay: 1 + index * 0.1,
+                          duration: 0.6,
+                          ease: "easeOut",
+                        }}
                         whileHover={{ scale: 1.1, y: -2 }}
                       >
                         {skill}
@@ -241,7 +305,11 @@ export default function Home() {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="py-20 bg-slate-900 relative overflow-hidden" ref={projectsRef}>
+      <section
+        id="projects"
+        className="py-20 bg-slate-900 relative overflow-hidden"
+        ref={projectsRef}
+      >
         {/* Floating geometric shapes */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <motion.div
@@ -253,7 +321,7 @@ export default function Home() {
             transition={{
               duration: 15,
               repeat: Infinity,
-              ease: "easeInOut"
+              ease: "easeInOut",
             }}
           />
           <motion.div
@@ -265,7 +333,7 @@ export default function Home() {
             transition={{
               duration: 18,
               repeat: Infinity,
-              ease: "easeInOut"
+              ease: "easeInOut",
             }}
           />
         </div>
@@ -273,7 +341,9 @@ export default function Home() {
           <motion.h2
             className="text-3xl md:text-4xl font-bold text-white mb-12 text-center"
             initial={{ opacity: 0, y: 60 }}
-            animate={projectsInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 60 }}
+            animate={
+              projectsInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 60 }
+            }
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
             Featured Projects
@@ -283,15 +353,17 @@ export default function Home() {
             <motion.div
               className="bg-slate-800 rounded-xl overflow-hidden shadow-lg group cursor-pointer"
               initial={{ opacity: 0, y: 40 }}
-              animate={projectsInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
+              animate={
+                projectsInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }
+              }
               transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-              whileHover={{ 
-                scale: 1.05, 
+              whileHover={{
+                scale: 1.05,
                 rotateY: 5,
-                boxShadow: "0 25px 50px rgba(0,0,0,0.5)"
+                boxShadow: "0 25px 50px rgba(0,0,0,0.5)",
               }}
             >
-              <motion.div 
+              <motion.div
                 className="h-48 bg-gradient-to-r from-blue-500 to-purple-500 relative overflow-hidden"
                 whileHover={{ scale: 1.1 }}
                 transition={{ duration: 0.3 }}
@@ -324,15 +396,17 @@ export default function Home() {
             <motion.div
               className="bg-slate-800 rounded-xl overflow-hidden shadow-lg group cursor-pointer"
               initial={{ opacity: 0, y: 40 }}
-              animate={projectsInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
+              animate={
+                projectsInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }
+              }
               transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
-              whileHover={{ 
-                scale: 1.05, 
+              whileHover={{
+                scale: 1.05,
                 rotateY: -5,
-                boxShadow: "0 25px 50px rgba(0,0,0,0.5)"
+                boxShadow: "0 25px 50px rgba(0,0,0,0.5)",
               }}
             >
-              <motion.div 
+              <motion.div
                 className="h-48 bg-gradient-to-r from-green-500 to-blue-500 relative overflow-hidden"
                 whileHover={{ scale: 1.1 }}
                 transition={{ duration: 0.3 }}
@@ -366,15 +440,17 @@ export default function Home() {
             <motion.div
               className="bg-slate-800 rounded-xl overflow-hidden shadow-lg group cursor-pointer"
               initial={{ opacity: 0, y: 40 }}
-              animate={projectsInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
+              animate={
+                projectsInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }
+              }
               transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
-              whileHover={{ 
-                scale: 1.05, 
+              whileHover={{
+                scale: 1.05,
                 rotateY: 5,
-                boxShadow: "0 25px 50px rgba(0,0,0,0.5)"
+                boxShadow: "0 25px 50px rgba(0,0,0,0.5)",
               }}
             >
-              <motion.div 
+              <motion.div
                 className="h-48 bg-gradient-to-r from-purple-500 to-pink-500 relative overflow-hidden"
                 whileHover={{ scale: 1.1 }}
                 transition={{ duration: 0.3 }}
@@ -386,7 +462,8 @@ export default function Home() {
               </motion.div>
               <div className="p-6">
                 <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-purple-400 transition-colors">
-                  SkyAlign – IoT-Based Autonomous Satellite Ground Tracking Ground Station
+                  SkyAlign – IoT-Based Autonomous Satellite Ground Tracking
+                  Ground Station
                 </h3>
                 <p className="text-gray-400 mb-4 leading-relaxed">
                   A smart IoT module for rescue missions that uses GPS to
@@ -408,15 +485,17 @@ export default function Home() {
             <motion.div
               className="bg-slate-800 rounded-xl overflow-hidden shadow-lg group cursor-pointer"
               initial={{ opacity: 0, y: 40 }}
-              animate={projectsInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
+              animate={
+                projectsInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }
+              }
               transition={{ duration: 0.6, delay: 0.8, ease: "easeOut" }}
-              whileHover={{ 
-                scale: 1.05, 
+              whileHover={{
+                scale: 1.05,
                 rotateY: -5,
-                boxShadow: "0 25px 50px rgba(0,0,0,0.5)"
+                boxShadow: "0 25px 50px rgba(0,0,0,0.5)",
               }}
             >
-              <motion.div 
+              <motion.div
                 className="h-48 bg-gradient-to-r from-orange-500 to-red-500 relative overflow-hidden"
                 whileHover={{ scale: 1.1 }}
                 transition={{ duration: 0.3 }}
@@ -431,7 +510,9 @@ export default function Home() {
                   Hospitality Hiring Platform
                 </h3>
                 <p className="text-gray-400 mb-4 leading-relaxed">
-                  A comprehensive hiring platform designed specifically for the hospitality industry, streamlining recruitment processes for hotels, restaurants, and service providers.
+                  A comprehensive hiring platform designed specifically for the
+                  hospitality industry, streamlining recruitment processes for
+                  hotels, restaurants, and service providers.
                 </p>
                 <motion.a
                   href="#"
@@ -448,12 +529,18 @@ export default function Home() {
       </section>
 
       {/* Publications Section */}
-      <section id="publications" className="py-20 bg-slate-800" ref={publicationsRef}>
+      <section
+        id="publications"
+        className="py-20 bg-slate-800"
+        ref={publicationsRef}
+      >
         <div className="max-w-4xl mx-auto px-4">
           <motion.h2
             className="text-3xl md:text-4xl font-bold text-white mb-12 text-center"
             initial={{ opacity: 0, y: 60 }}
-            animate={publicationsInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 60 }}
+            animate={
+              publicationsInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 60 }
+            }
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
             Publications
@@ -463,37 +550,57 @@ export default function Home() {
           <motion.div
             className="relative bg-slate-900 border-l-4 border-blue-500 rounded-lg shadow-md p-8 hover:shadow-xl transition-shadow duration-300"
             initial={{ opacity: 0, x: -60 }}
-            animate={publicationsInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -60 }}
+            animate={
+              publicationsInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -60 }
+            }
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            whileHover={{ scale: 1.02, boxShadow: "0 25px 50px rgba(59, 130, 246, 0.15)" }}
+            whileHover={{
+              scale: 1.02,
+              boxShadow: "0 25px 50px rgba(59, 130, 246, 0.15)",
+            }}
           >
             {/* Floating Label */}
-            <motion.span 
+            <motion.span
               className="absolute -top-3 left-6 bg-blue-500 text-white text-xs font-semibold px-3 py-1 rounded-full shadow-md"
               initial={{ opacity: 0, y: -10 }}
-              animate={publicationsInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -10 }}
+              animate={
+                publicationsInView
+                  ? { opacity: 1, y: 0 }
+                  : { opacity: 0, y: -10 }
+              }
               transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
             >
               Published
             </motion.span>
 
-            <motion.h3 
+            <motion.h3
               className="text-2xl font-semibold text-white mb-3"
               initial={{ opacity: 0, y: 20 }}
-              animate={publicationsInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              animate={
+                publicationsInView
+                  ? { opacity: 1, y: 0 }
+                  : { opacity: 0, y: 20 }
+              }
               transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
             >
-              Voice-Based User Interface for Hands-Free Data Entry and Automation at Workplaces
+              Voice-Based User Interface for Hands-Free Data Entry and
+              Automation at Workplaces
             </motion.h3>
 
-            <motion.p 
+            <motion.p
               className="text-gray-400 mb-4 leading-relaxed"
               initial={{ opacity: 0, y: 20 }}
-              animate={publicationsInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              animate={
+                publicationsInView
+                  ? { opacity: 1, y: 0 }
+                  : { opacity: 0, y: 20 }
+              }
               transition={{ duration: 0.6, delay: 0.8, ease: "easeOut" }}
             >
-              Published in <span className="font-semibold text-gray-200">MethodsX</span>.
-              Research on improving workplace efficiency using a voice-enabled automation interface.
+              Published in{" "}
+              <span className="font-semibold text-gray-200">MethodsX</span>.
+              Research on improving workplace efficiency using a voice-enabled
+              automation interface.
             </motion.p>
 
             <motion.a
@@ -502,7 +609,11 @@ export default function Home() {
               rel="noopener noreferrer"
               className="inline-block mt-2 text-blue-400 hover:text-blue-300 font-medium transition-colors"
               initial={{ opacity: 0, y: 20 }}
-              animate={publicationsInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              animate={
+                publicationsInView
+                  ? { opacity: 1, y: 0 }
+                  : { opacity: 0, y: 20 }
+              }
               transition={{ duration: 0.6, delay: 1, ease: "easeOut" }}
               whileHover={{ x: 5 }}
             >
@@ -514,57 +625,65 @@ export default function Home() {
 
       {/* Contact Section */}
       <section id="contact" className="py-20 bg-slate-900" ref={contactRef}>
-        <motion.div 
+        <motion.div
           className="max-w-4xl mx-auto px-4 text-center"
           initial={{ opacity: 0, y: 60 }}
           animate={contactInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 60 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <motion.h2 
+          <motion.h2
             className="text-3xl md:text-4xl font-bold text-white mb-8"
             initial={{ opacity: 0, y: 30 }}
-            animate={contactInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            animate={
+              contactInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }
+            }
             transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
           >
             Get In Touch
           </motion.h2>
-          <motion.p 
+          <motion.p
             className="text-gray-300 mb-8 text-lg"
             initial={{ opacity: 0, y: 30 }}
-            animate={contactInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            animate={
+              contactInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }
+            }
             transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
           >
             I&apos;m always open to discussing new projects, creative ideas, or
             opportunities to be part of your visions.
           </motion.p>
-          
+
           {/* CTA Button with Pulsing Effect */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
-            animate={contactInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+            animate={
+              contactInView
+                ? { opacity: 1, scale: 1 }
+                : { opacity: 0, scale: 0.8 }
+            }
             transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
           >
             <motion.a
               href="/pages/contact"
               className="inline-block px-8 py-4 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-colors text-lg font-semibold relative overflow-hidden"
-              whileHover={{ 
+              whileHover={{
                 scale: 1.05,
-                boxShadow: "0 20px 40px rgba(59, 130, 246, 0.3)"
+                boxShadow: "0 20px 40px rgba(59, 130, 246, 0.3)",
               }}
               whileTap={{ scale: 0.95 }}
               animate={{
                 boxShadow: [
                   "0 0 0 0 rgba(59, 130, 246, 0.4)",
                   "0 0 0 20px rgba(59, 130, 246, 0)",
-                  "0 0 0 0 rgba(59, 130, 246, 0)"
-                ]
+                  "0 0 0 0 rgba(59, 130, 246, 0)",
+                ],
               }}
               transition={{
                 boxShadow: {
                   duration: 2,
                   repeat: Infinity,
-                  ease: "easeInOut"
-                }
+                  ease: "easeInOut",
+                },
               }}
             >
               Send Me a Message
@@ -574,12 +693,14 @@ export default function Home() {
               />
             </motion.a>
           </motion.div>
-          
+
           {/* Social Links */}
-          <motion.div 
+          <motion.div
             className="mt-12 flex justify-center space-x-6"
             initial={{ opacity: 0, y: 30 }}
-            animate={contactInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            animate={
+              contactInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }
+            }
             transition={{ duration: 0.6, delay: 0.8, ease: "easeOut" }}
           >
             <motion.a
@@ -611,7 +732,7 @@ export default function Home() {
           </motion.div>
         </motion.div>
       </section>
-      
+
       {/* Add Scroll to Top Button */}
       <ScrollToTop />
     </div>
