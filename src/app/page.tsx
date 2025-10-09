@@ -21,7 +21,7 @@ export default function Home() {
     <div className="min-h-screen bg-slate-900">
       <Navbar />
 
-      {/* Hero Section */}
+      {/* Hero Section */}  
       <div className="h-screen relative w-full overflow-hidden bg-slate-900 flex flex-col items-center justify-center">
         <div className="absolute inset-0 w-full h-full bg-slate-900 z-20 [mask-image:radial-gradient(transparent,white)] pointer-events-none" />
         <Boxes />
@@ -95,26 +95,26 @@ export default function Home() {
 
       {/* Scroll Section with Enhanced Animation */}
       <motion.section
-  className="py-12 bg-slate-800 relative overflow-hidden"
-  initial={{ opacity: 0 }}
-  whileInView={{ opacity: 1 }}
-  transition={{ duration: 0.8 }}
-  viewport={{ once: true, amount: 0.3 }}
->
-  {/* Animated gradient background (same as About section) */}
-  <motion.div
-    className="absolute inset-0 opacity-10"
-    animate={{
-      backgroundPosition: ["0% 0%", "100% 100%"],
-    }}
-    transition={{
-      duration: 20,
-      repeat: Infinity,
-      repeatType: "reverse",
-      ease: "linear",
-    }}
-    style={{
-      backgroundImage: `linear-gradient(45deg, 
+        className="py-12 bg-slate-800 relative overflow-hidden"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true, amount: 0.3 }}
+      >
+        {/* Animated gradient background (same as About section) */}
+        <motion.div
+          className="absolute inset-0 opacity-10"
+          animate={{
+            backgroundPosition: ["0% 0%", "100% 100%"],
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            repeatType: "reverse",
+            ease: "linear",
+          }}
+          style={{
+            backgroundImage: `linear-gradient(45deg, 
         rgba(59, 130, 246, 0.1) 25%, 
         transparent 25%, 
         transparent 75%, 
@@ -126,22 +126,22 @@ export default function Home() {
         transparent 75%, 
         rgba(139, 92, 246, 0.1) 75%, 
         rgba(139, 92, 246, 0.1))`,
-      backgroundSize: "60px 60px",
-    }}
-  />
+            backgroundSize: "60px 60px",
+          }}
+        />
 
-  {/* ScrollVelocity content */}
-  <ScrollVelocity
-    texts={["Projects", "Hackathons"]}
-    velocity={100}
-    className="custom-scroll-text text-white"
-  />
-</motion.section>
+        {/* ScrollVelocity content */}
+        <ScrollVelocity
+          texts={["Projects", "Hackathons"]}
+          velocity={100}
+          className="custom-scroll-text text-white"
+        />
+      </motion.section>
 
       {/* About Section */}
       <section
         id="about"
-        className="py-20 bg-slate-800 relative overflow-hidden"
+        className="py-20 bg-slate-900 relative overflow-hidden"
         ref={aboutRef}
       >
         {/* Subtle animated background */}
@@ -307,7 +307,7 @@ export default function Home() {
       {/* Projects Section */}
       <section
         id="projects"
-        className="py-20 bg-slate-900 relative overflow-hidden"
+        className="py-20 bg-slate-800 relative overflow-hidden"
         ref={projectsRef}
       >
         {/* Floating geometric shapes */}
@@ -531,7 +531,7 @@ export default function Home() {
       {/* Publications Section */}
       <section
         id="publications"
-        className="py-20 bg-slate-800"
+        className="py-20 bg-slate-900"
         ref={publicationsRef}
       >
         <div className="max-w-4xl mx-auto px-4">
@@ -624,7 +624,7 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 bg-slate-900" ref={contactRef}>
+      <section id="contact" className="py-20 bg-slate-800" ref={contactRef}>
         <motion.div
           className="max-w-4xl mx-auto px-4 text-center"
           initial={{ opacity: 0, y: 60 }}
