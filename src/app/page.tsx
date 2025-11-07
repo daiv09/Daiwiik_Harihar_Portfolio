@@ -514,8 +514,8 @@ export default function Home() {
                   hospitality industry, streamlining recruitment processes for
                   hotels, restaurants, and service providers.
                 </p>
-                <motion.a
-                  href="#"
+                <motion.a 
+                  href="https://github.com/daiv09/venue-talent-flow"
                   className="text-orange-400 hover:text-orange-300 font-medium inline-flex items-center gap-2"
                   whileHover={{ x: 5 }}
                   transition={{ type: "spring", stiffness: 400 }}
