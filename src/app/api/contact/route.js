@@ -1,13 +1,9 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
-import dotenv from "dotenv";
-// If using ".env.local" in root:
-dotenv.config({ path: "./.env" });
-
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-export async function POST(req) {
+export async function POST(req: Request) {
   try {
     const { name, email, message } = await req.json();
 
@@ -16,9 +12,9 @@ export async function POST(req) {
       to: process.env.TO_EMAIL,
       subject: "New Portfolio Message",
       html: `<p>Name: <strong>${name}</strong></p>
-        <p>Email: ${email}</p>
-        <p>Message:</p>
-        <div>${message}</div>`,
+      <p>Email: ${email}</p>
+      <p>Message:</p>
+      <div>${message}</div>`,
     });
 
     return NextResponse.json({ success: true, message: "Message sent" });
