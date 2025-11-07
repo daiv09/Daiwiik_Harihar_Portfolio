@@ -1,30 +1,31 @@
-import nodemailer from "nodemailer";
+import { NextResponse } from "next/server";
+import { Resend } from "resend";
+
+import dotenv from "dotenv";
+// If using ".env.local" in root:
+dotenv.config({ path: "./.env" });
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(req) {
-  const { name, email, message } = await req.json();
-
-  const transporter = nodemailer.createTransport({
-    service: "gmail",
-    auth: {
-      user: process.env.MY_EMAIL,
-      pass: process.env.MY_APP_PASSWORD,
-    },
-  });
-
-  const mailOptions = {
-    from: process.env.MY_EMAIL,
-    to: process.env.MY_EMAIL,
-    subject: `New message from ${name}`,
-    text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
-  };
-
   try {
-    await transporter.sendMail(mailOptions);
-    return new Response(JSON.stringify({ success: true }), { status: 200 });
+    const { name, email, message } = await req.json();
+
+    await resend.emails.send({
+      from: "Portfolio Contact <onboarding@resend.dev>",
+      to: process.env.TO_EMAIL,
+      subject: "New Portfolio Message",
+      html: `<p>Name: <strong>${name}</strong></p>
+        <p>Email: ${email}</p>
+        <p>Message:</p>
+        <div>${message}</div>`,
+    });
+
+    return NextResponse.json({ success: true, message: "Message sent" });
   } catch (error) {
-    console.error("❌ Email sending error:", error);
-    return new Response(
-      JSON.stringify({ error: "Failed to send email" }),
+    console.error(error);
+    return NextResponse.json(
+      { success: false, message: "Failed to send email." },
       { status: 500 }
     );
   }

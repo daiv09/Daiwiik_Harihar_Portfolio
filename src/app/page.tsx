@@ -664,7 +664,7 @@ export default function Home() {
             transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
           >
             <motion.a
-              href="/pages/contact"
+              href="/api/contact"
               className="inline-block px-8 py-4 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-colors text-lg font-semibold relative overflow-hidden"
               whileHover={{
                 scale: 1.05,
