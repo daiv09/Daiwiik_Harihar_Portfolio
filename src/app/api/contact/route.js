@@ -3,7 +3,7 @@ import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-export async function POST(req: Request) {
+export async function POST(req) {
   try {
     const { name, email, message } = await req.json();
 
@@ -14,7 +14,7 @@ export async function POST(req: Request) {
       html: `<p>Name: <strong>${name}</strong></p>
       <p>Email: ${email}</p>
       <p>Message:</p>
-      <div>${message}</div>`,
+      <div>${message}</div>`
     });
 
     return NextResponse.json({ success: true, message: "Message sent" });
